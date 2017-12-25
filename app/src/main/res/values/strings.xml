@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Pogodynka</string>
+    <string name="cityName">Nazwa miejscowosci: </string>
+    <string name="cityTemp">Temperatura: </string>
+    <string name="cityMinTemp">Temp Min: </string>
+    <string name="cityMaxTemp">Temp Max: </string>
+    <string name="cityFail">Blad</string>
+
+</resources>
