@@ -56,7 +56,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(ViewHolder holder, int position) {
         if(mData.get(position)instanceof City){
         City animal = (City)mData.get(position);
-        holder.myTextView.setText(animal.getCityName());}
+        holder.myTextView.setText(animal.GetDate());}
     }
 
     // total number of rows
