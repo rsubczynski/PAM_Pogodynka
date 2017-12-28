@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.radek.pam_zaliczenie.Util;
+import com.example.radek.pam_zaliczenie.adapters.HeaderItemDecoration;
 import com.example.radek.pam_zaliczenie.adapters.MyRecyclerViewAdapter;
 import com.example.radek.pam_zaliczenie.R;
 import com.example.radek.pam_zaliczenie.entity.CityAndHeaderList;
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         MyRecyclerViewAdapter myRecyclerViewAdapter = new MyRecyclerViewAdapter(this, cityList);
         recyclerView.setAdapter(myRecyclerViewAdapter);
+        recyclerView.addItemDecoration(new HeaderItemDecoration(recyclerView, myRecyclerViewAdapter));
+
     }
 
     @Override

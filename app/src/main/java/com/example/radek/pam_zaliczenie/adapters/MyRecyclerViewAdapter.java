@@ -11,12 +11,14 @@ import android.widget.TextView;
 import com.example.radek.pam_zaliczenie.R;
 import com.example.radek.pam_zaliczenie.entity.City;
 import com.example.radek.pam_zaliczenie.entity.CityAndHeaderList;
+import com.example.radek.pam_zaliczenie.entity.Header;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
+public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>
+        implements HeaderItemDecoration.StickyHeaderInterface {
 
     private List<CityAndHeaderList> mData = Collections.emptyList();
     private final LayoutInflater mInflater;
@@ -38,13 +40,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = null;
-        switch (viewType){
+        switch (viewType) {
             case CityAndHeaderList.VIEW_TYPE_CITY:
-                 view = mInflater.inflate(R.layout.recyclerview_row, parent, false);
+                view = mInflater.inflate(R.layout.recyclerview_row, parent, false);
 
                 break;
             case CityAndHeaderList.VIEW_TYPE_HEADER:
-                 view = mInflater.inflate(R.layout.recyclerview_row_header, parent, false);
+                view = mInflater.inflate(R.layout.recyclerview_row_header, parent, false);
                 break;
         }
 
@@ -54,9 +56,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     // binds the data to the textview in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if(mData.get(position)instanceof City){
-        City animal = (City)mData.get(position);
-        holder.myTextView.setText(animal.GetDate());}
+        if (mData.get(position) instanceof City) {
+            City animal = (City) mData.get(position);
+            holder.myTextView.setText(animal.GetDate());
+        }
     }
 
     // total number of rows
@@ -65,6 +68,38 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         return mData.size();
     }
 
+    @Override
+    public int getHeaderPositionForItem(int itemPosition) {
+        int headerPosition = 0;
+        do {
+            if (this.isHeader(itemPosition)) {
+                headerPosition = itemPosition;
+                break;
+            }
+            itemPosition -= 1;
+        } while (itemPosition >= 0);
+        return headerPosition;
+    }
+
+    @Override
+    public int getHeaderLayout(int headerPosition) {
+        return R.layout.recyclerview_row_header;
+    }
+
+    @Override
+    public void bindHeaderData(View header, int headerPosition) {
+        TextView tv = header.findViewById(R.id.tvCityName);
+            tv.setText(((City) mData.get(headerPosition+1)).GetDate());
+    }
+
+    @Override
+    public boolean isHeader(int itemPosition) {
+        if ((mData.get(itemPosition) instanceof Header)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
