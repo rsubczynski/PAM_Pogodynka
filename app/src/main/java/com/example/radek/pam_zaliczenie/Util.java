@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.example.radek.pam_zaliczenie.entity.City;
 import com.example.radek.pam_zaliczenie.entity.CityAndHeaderList;
+import com.example.radek.pam_zaliczenie.entity.Header;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -13,6 +14,7 @@ public class Util {
     @NonNull
     public static ArrayList<CityAndHeaderList> CityListGenerator() {
         ArrayList<CityAndHeaderList> cityList = new ArrayList<>();
+        cityList.add(new Header());
         cityList.add(new City("Warta",0L));
         cityList.add(new City("Lódź",0L));
         cityList.add(new City("Warszawa",0L));

@@ -29,18 +29,34 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         this.mClickListener = (ItemClickListener) context;
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return mData.get(position).getListItemType();
+    }
+
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.recyclerview_row, parent, false);
+        View view = null;
+        switch (viewType){
+            case CityAndHeaderList.VIEW_TYPE_CITY:
+                 view = mInflater.inflate(R.layout.recyclerview_row, parent, false);
+
+                break;
+            case CityAndHeaderList.VIEW_TYPE_HEADER:
+                 view = mInflater.inflate(R.layout.recyclerview_row_header, parent, false);
+                break;
+        }
+
         return new ViewHolder(view);
     }
 
     // binds the data to the textview in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        if(mData.get(position)instanceof City){
         City animal = (City)mData.get(position);
-        holder.myTextView.setText(animal.getCityName());
+        holder.myTextView.setText(animal.getCityName());}
     }
 
     // total number of rows

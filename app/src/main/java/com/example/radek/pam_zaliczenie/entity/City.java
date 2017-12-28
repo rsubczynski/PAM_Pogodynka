@@ -30,4 +30,9 @@ public class City implements CityAndHeaderList {
     }
 
     private Long timeStamp;
+
+    @Override
+    public int getListItemType() {
+        return CityAndHeaderList.VIEW_TYPE_CITY;
+    }
 }

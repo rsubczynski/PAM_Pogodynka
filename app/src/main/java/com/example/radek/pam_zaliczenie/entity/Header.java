@@ -16,4 +16,8 @@ public class Header implements CityAndHeaderList {
 
     private long timeStamp;
 
+    @Override
+    public int getListItemType() {
+        return CityAndHeaderList.VIEW_TYPE_HEADER;
+    }
 }
