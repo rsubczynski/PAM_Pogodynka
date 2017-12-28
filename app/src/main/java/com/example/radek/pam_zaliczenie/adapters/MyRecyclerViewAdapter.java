@@ -9,18 +9,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.radek.pam_zaliczenie.R;
+import com.example.radek.pam_zaliczenie.entity.City;
+import com.example.radek.pam_zaliczenie.entity.CityAndHeaderList;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
-    private List<String> mData = Collections.emptyList();
+    private List<CityAndHeaderList> mData = Collections.emptyList();
     private final LayoutInflater mInflater;
     private final ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    public MyRecyclerViewAdapter(@NonNull Context context, @NonNull List<String> data) {
+    public MyRecyclerViewAdapter(@NonNull Context context, @NonNull ArrayList<CityAndHeaderList> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
         this.mClickListener = (ItemClickListener) context;
@@ -36,8 +39,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     // binds the data to the textview in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String animal = mData.get(position);
-        holder.myTextView.setText(animal);
+        City animal = (City)mData.get(position);
+        holder.myTextView.setText(animal.getCityName());
     }
 
     // total number of rows

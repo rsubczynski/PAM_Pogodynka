@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import com.example.radek.pam_zaliczenie.Util;
 import com.example.radek.pam_zaliczenie.adapters.MyRecyclerViewAdapter;
 import com.example.radek.pam_zaliczenie.R;
+import com.example.radek.pam_zaliczenie.entity.CityAndHeaderList;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<String> cityList = Util.CityListGenerator();
+        ArrayList<CityAndHeaderList> cityList = Util.CityListGenerator();
 
         RecyclerView recyclerView = findViewById(R.id.rvAnimals);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

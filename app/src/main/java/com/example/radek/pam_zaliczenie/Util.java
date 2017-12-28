@@ -2,29 +2,30 @@ package com.example.radek.pam_zaliczenie;
 
 import android.support.annotation.NonNull;
 
+import com.example.radek.pam_zaliczenie.entity.City;
+import com.example.radek.pam_zaliczenie.entity.CityAndHeaderList;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
 public class Util {
 
     @NonNull
-    public static ArrayList<String> CityListGenerator() {
-        ArrayList<String> cityList = new ArrayList<>();
-        cityList.add("Warta");
-        cityList.add("Lódź");
-        cityList.add("Warszawa");
-        cityList.add("Sieradz");
-        cityList.add("London");
-        cityList.add("Berlin");
-        cityList.add("Kalisz");
-        cityList.add("Kraków");
-        cityList.add("Meksyk");
-        cityList.add("Moskwa");
-        cityList.add("Bruksela");
-        cityList.add("Londyn");
-        cityList.add("Madryt");
-        cityList.add("Lizbona");
-        cityList.add("Poznań");
+    public static ArrayList<CityAndHeaderList> CityListGenerator() {
+        ArrayList<CityAndHeaderList> cityList = new ArrayList<>();
+        cityList.add(new City("Warta",0L));
+        cityList.add(new City("Lódź",0L));
+        cityList.add(new City("Warszawa",0L));
+        cityList.add(new City("Sieradz",0L));
+        cityList.add(new City("London",0L));
+        cityList.add(new City("Berlin",0L));
+        cityList.add(new City("Meksyk",0L));
+        cityList.add(new City("Moskwa",0L));
+        cityList.add(new City("Bruksela",0L));
+        cityList.add(new City("Londyn",0L));
+        cityList.add(new City("Madryt",0L));
+        cityList.add(new City("Lizbona",0L));
+        cityList.add(new City("Poznań",0L));
 
         return cityList;
     }
