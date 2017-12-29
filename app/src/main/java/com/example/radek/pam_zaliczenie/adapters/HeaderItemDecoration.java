@@ -85,6 +85,7 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     private View getHeaderViewForItem(int itemPosition, RecyclerView parent) {
+        System.out.println("getHeaderViewForItem");
         int headerPosition = mListener.getHeaderPositionForItem(itemPosition);
         int layoutResId = mListener.getHeaderLayout(headerPosition);
         View header = LayoutInflater.from(parent.getContext()).inflate(layoutResId, parent, false);
@@ -93,6 +94,8 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     private void drawHeader(Canvas c, View header) {
+        System.out.println("drawHeader");
+
         c.save();
         c.translate(0, 0);
         header.draw(c);
@@ -100,6 +103,7 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     private void moveHeader(Canvas c, View currentHeader, View nextHeader) {
+        System.out.println("moveHeader");
         c.save();
         c.translate(0, nextHeader.getTop() - currentHeader.getHeight());
         currentHeader.draw(c);

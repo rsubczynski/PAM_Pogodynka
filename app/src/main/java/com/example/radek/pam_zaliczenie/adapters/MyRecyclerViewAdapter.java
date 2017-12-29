@@ -60,7 +60,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             City animal = (City) mData.get(position);
             holder.myTextView.setText(animal.GetDate());
         }
-
         if (mData.get(position) instanceof Header) {
             Header animal = (Header) mData.get(position);
             holder.myTextView.setText(animal.GetDate());
