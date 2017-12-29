@@ -92,7 +92,7 @@ public class Util {
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
                 if (day != tmpDay) {
                     tmpDay = day;
-                    cityAndHeaderLists.add(new Header());
+                    cityAndHeaderLists.add(new Header(calendar.getTimeInMillis()));
                 } else {
                     cityAndHeaderLists.add(item);
                 }
@@ -100,6 +100,8 @@ public class Util {
         }
         return cityAndHeaderLists;
     }
+
+
 
     public static String toCelsius(Double kelvin) {
         double result = kelvin - 273.0;

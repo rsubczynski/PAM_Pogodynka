@@ -60,6 +60,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             City animal = (City) mData.get(position);
             holder.myTextView.setText(animal.GetDate());
         }
+
+        if (mData.get(position) instanceof Header) {
+            Header animal = (Header) mData.get(position);
+            holder.myTextView.setText(animal.GetDate());
+        }
     }
 
     // total number of rows
@@ -89,7 +94,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void bindHeaderData(View header, int headerPosition) {
         TextView tv = header.findViewById(R.id.tvCityName);
-            tv.setText(((City) mData.get(headerPosition+1)).GetDate());
+            tv.setText(((Header) mData.get(headerPosition)).GetDate());
     }
 
     @Override
