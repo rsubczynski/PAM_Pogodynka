@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<CityAndHeaderList> cityList = Util.CityListGenerator();
+        ArrayList<CityAndHeaderList> cityList = Util.finalListGenerator();
 
         RecyclerView recyclerView = findViewById(R.id.rvAnimals);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
