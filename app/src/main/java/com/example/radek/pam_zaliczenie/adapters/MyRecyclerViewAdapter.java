@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static android.support.v7.widget.LinearSmoothScroller.SNAP_TO_START;
+
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>
         implements HeaderItemDecoration.StickyHeaderInterface {
 
@@ -53,7 +55,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         return new ViewHolder(view);
     }
 
-    // binds the data to the textview in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (mData.get(position) instanceof City) {
@@ -125,4 +126,5 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public interface ItemClickListener {
         void onItemClick(String cityName);
     }
+
 }

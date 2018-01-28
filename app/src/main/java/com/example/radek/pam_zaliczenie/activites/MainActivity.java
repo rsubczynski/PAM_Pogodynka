@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.radek.pam_zaliczenie.Util;
@@ -30,6 +31,19 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerViewAda
         MyRecyclerViewAdapter myRecyclerViewAdapter = new MyRecyclerViewAdapter(this, cityList);
         recyclerView.setAdapter(myRecyclerViewAdapter);
         recyclerView.addItemDecoration(new HeaderItemDecoration(recyclerView, myRecyclerViewAdapter));
+
+        RecyclerView.LayoutManager linearLayoutManager = recyclerView.getLayoutManager();
+
+        RecyclerView.SmoothScroller smoothScroller = new LinearSmoothScroller(getApplicationContext()) {
+            @Override protected int getVerticalSnapPreference() {
+                return LinearSmoothScroller.SNAP_TO_START;
+            }
+        };
+
+        linearLayoutManager.startSmoothScroll(smoothScroller);
+        linearLayoutManager.scro(13, (int) (recyclerView.getHeight()*0.1));
+
+
 
     }
 
